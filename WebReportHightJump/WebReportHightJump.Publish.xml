@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\Users\USER1\Dropbox\OGA\WebReportHightJump\web_publish" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Web.config" publishTime="03/30/2016 14:55:43" />
+    <file relUrl="Site.Master" publishTime="02/03/2016 15:07:20" />
+    <file relUrl="Account/Register.aspx" publishTime="01/10/2013 09:51:10" />
+    <file relUrl="CrystalReport.aspx" publishTime="01/16/2013 16:48:36" />
+    <file relUrl="Account/Web.config" publishTime="01/28/2016 15:59:45" />
+    <file relUrl="Account/Login.aspx" publishTime="01/10/2013 09:51:10" />
+    <file relUrl="Styles/Site.css" publishTime="03/29/2013 15:03:34" />
+    <file relUrl="Scripts/jquery-1.4.1.js" publishTime="01/10/2013 09:51:10" />
+    <file relUrl="Account/ChangePassword.aspx" publishTime="01/10/2013 09:51:10" />
+    <file relUrl="bin/WebReportHightJump.dll" publishTime="03/30/2016 14:55:12" />
+    <file relUrl="Global.asax" publishTime="01/10/2013 09:51:10" />
+    <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="01/10/2013 09:51:10" />
+    <file relUrl="About.aspx" publishTime="01/10/2013 09:51:10" />
+    <file relUrl="Account/ChangePasswordSuccess.aspx" publishTime="01/10/2013 09:51:10" />
+    <file relUrl="Default.aspx" publishTime="01/16/2013 15:49:12" />
+    <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="01/10/2013 09:51:10" />
+    <file relUrl="bin/WebReportHightJump.pdb" publishTime="03/30/2016 14:55:12" />
+  </publishProfile>
+</publishData>
