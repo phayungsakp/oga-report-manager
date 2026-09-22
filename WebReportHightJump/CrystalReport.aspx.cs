@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.UI;
 using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 
 namespace WebReportHightJump
 {
@@ -41,6 +42,8 @@ namespace WebReportHightJump
                         return;
                     }
 
+                    ConfigureReportConnection(rpt);
+
                     // set Parameter to Report
                     string[] a = arr[0].Split('&');
                     for (int i = 0; i < a.Length; i++)
@@ -70,17 +73,12 @@ namespace WebReportHightJump
                     //    string pDatabase = ClassConfig.Instance.getDatabase();
                     //    rpt.DataSourceConnections[0].SetConnection(pServer, pDatabase, pUser, pPasss);
                     //}
-                    string pUser = ClassConfig.Instance.getUser();
-                    string pPasss = ClassConfig.Instance.getPass();
-                    string pServer = ClassConfig.Instance.getServer();
-                    string pDatabase = ClassConfig.Instance.getDatabase();
-                    rpt.DataSourceConnections[0].SetConnection(pServer, pDatabase, pUser, pPasss);
-
 
                     //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
                     
 
                     this.CrystalReportViewer1.ReportSource = rpt;
+                    this.CrystalReportViewer1.RefreshReport();
                     this.CrystalReportViewer1.Zoom(Convert.ToInt32(ClassConfig.Instance.getZoomDefault()));
                     //this.CrystalReportViewer1.ReportSource = crs;
 
@@ -135,12 +133,8 @@ namespace WebReportHightJump
                     }
                 }
 
-                string pUser = ClassConfig.Instance.getUser();
-                string pPass = ClassConfig.Instance.getPass();
-                string pServer = ClassConfig.Instance.getServer();
-                string pDatabase = ClassConfig.Instance.getDatabase();
-                rpt.DataSourceConnections[0].SetConnection(pServer, pDatabase, pUser, pPass);
-                 
+                ConfigureReportConnection(rpt);
+
                 //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
                  
                 this.CrystalReportViewer1.ReportSource = rpt;
@@ -151,6 +145,42 @@ namespace WebReportHightJump
 
                 //throw;
             }
+        }
+
+        private void ConfigureReportConnection(ReportDocument report)
+        {
+            var connection = new ConnectionInfo
+            {
+                ServerName = ClassConfig.Instance.getServer(),
+                DatabaseName = ClassConfig.Instance.getDatabase(),
+                UserID = ClassConfig.Instance.getUser(),
+                Password = ClassConfig.Instance.getPass(),
+                IntegratedSecurity = false
+            };
+            connection.LogonProperties.Set("Provider", "MSOLEDBSQL");
+            connection.LogonProperties.Set("Encrypt", "False");
+            connection.LogonProperties.Set("Trust Server Certificate", "True");
+
+            for (int i = 0; i < report.DataSourceConnections.Count; i++)
+            {
+                var source = report.DataSourceConnections[i];
+                source.LogonProperties.Set("Provider", "MSOLEDBSQL");
+                source.LogonProperties.Set("Encrypt", "False");
+                source.LogonProperties.Set("Trust Server Certificate", "True");
+                source.SetLogonProperties(source.LogonProperties);
+                source.SetConnection(connection.ServerName, connection.DatabaseName, connection.UserID, connection.Password);
+            }
+
+            for (int i = 0; i < report.Database.Tables.Count; i++)
+            {
+                Table table = report.Database.Tables[i];
+                TableLogOnInfo logon = table.LogOnInfo;
+                logon.ConnectionInfo = connection;
+                table.ApplyLogOnInfo(logon);
+            }
+
+            for (int i = 0; i < report.Subreports.Count; i++)
+                ConfigureReportConnection(report.Subreports[i]);
         }
 
         protected void lbtnPrint_Click(object sender, EventArgs e)

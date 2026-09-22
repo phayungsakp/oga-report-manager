@@ -90,6 +90,9 @@ namespace WebReportHightJump.WebPrint
                 crConnectionInfo.DatabaseName = pDatabase; // Database name
                 crConnectionInfo.UserID = pUser; // username
                 crConnectionInfo.Password = pPasss; // password
+                crConnectionInfo.LogonProperties.Set("Provider", "MSOLEDBSQL");
+                crConnectionInfo.LogonProperties.Set("Encrypt", "False");
+                crConnectionInfo.LogonProperties.Set("Trust Server Certificate", "True");
                 CrTables = crReportDocument.Database.Tables;
 
                 foreach (Table CrTable in CrTables)

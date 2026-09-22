@@ -392,17 +392,16 @@
     <%--******************************Report Viewer*******************************--%>
     <asp:Panel ID="Panel1" runat="server" Width="100%" ScrollBars="auto">
         <div id="dvReport">
-            <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="True"
+            <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="False"
                 Height="900px" Width="100%"
                 HasToggleGroupTreeButton="false"
                 ToolPanelWidth="200px"
-                EnableParameterPrompt="False" BestFitPage="False"
+                EnableParameterPrompt="False"
+                EnableDatabaseLogonPrompt="False"
+                BestFitPage="False"
                 ToolPanelView="None" />
         </div>
 
-        <CR:CrystalReportSource ID="CrystalReportSource1" runat="server">
-            <Report FileName="CrystalReports\Report13_.rpt" />
-        </CR:CrystalReportSource>
     </asp:Panel>
 
 
