@@ -23,6 +23,7 @@
 - Frontend: Bootstrap 4.3.1, jQuery 3.4.1, Font Awesome 4.7.0, Popper.js
 
 อ้างอิงจาก:
+
 - WebReportHightJump/WebReportHightJump.csproj
 - WebReportHightJump/packages.config
 
@@ -85,8 +86,8 @@ sequenceDiagram
 
 พารามิเตอร์สำคัญ:
 
-- _app_reportpath (required): ชื่อไฟล์ .rpt ภายใต้โฟลเดอร์ CrystalReports
-- _app_Reporttitle (optional): title ที่แสดงบน master page
+- \_app_reportpath (required): ชื่อไฟล์ .rpt ภายใต้โฟลเดอร์ CrystalReports
+- \_app_Reporttitle (optional): title ที่แสดงบน master page
 - key อื่นทั้งหมดที่ไม่ขึ้นต้น _app_: จะถูก map เป็น report parameter โดยใช้ชื่อ key ตรงกับ parameter ใน report
 
 ตัวอย่าง:
@@ -98,8 +99,8 @@ sequenceDiagram
 ในตัวอย่างด้านบน:
 
 - WH และ DocDate จะถูกส่งเข้า report parameter
-- _app_reportpath ใช้กำหนดไฟล์รายงาน
-- _app_Reporttitle ใช้ตั้งหัวข้อบนหน้าเว็บ
+- \_app_reportpath ใช้กำหนดไฟล์รายงาน
+- \_app_Reporttitle ใช้ตั้งหัวข้อบนหน้าเว็บ
 
 ## 6) Barcode endpoint
 
@@ -140,7 +141,7 @@ Steps:
    - crtZoomDefault
 4. ตั้ง startup project เป็น WebReportHightJump
 5. Run ด้วย IIS Express หรือ Local IIS
-6. ทดสอบด้วย URL ที่มี _app_reportpath และ report parameters
+6. ทดสอบด้วย URL ที่มี \_app_reportpath และ report parameters
 
 ## 8) Configuration ที่ต้องระวัง
 
@@ -165,4 +166,3 @@ Steps:
 - WebReportHightJump/WebPrint/WebClientPrintAPI.ashx.cs
 - WebReportHightJump/barcodegen.ashx.cs
 - WebReportHightJump/Web.config
-
