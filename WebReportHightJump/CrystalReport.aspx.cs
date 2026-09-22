@@ -19,11 +19,6 @@ namespace WebReportHightJump
                     lbError.Text = string.Empty;
                     string user = string.Empty;
                     string pass = string.Empty;
-                    string query = Server.UrlDecode(Request.QueryString.ToString()); //Request.QueryString.ToString();
-                                                                                     //string query = Request.QueryString.ToString();
-
-                    string[] arr = query.Split('?');
-
                     // set Report Title
                     if (Request.QueryString["_app_Reporttitle"] != null)
                     {
@@ -44,15 +39,7 @@ namespace WebReportHightJump
 
                     ConfigureReportConnection(rpt);
 
-                    // set Parameter to Report
-                    string[] a = arr[0].Split('&');
-                    for (int i = 0; i < a.Length; i++)
-                    {
-                        if (i >= 4)
-                        {
-                            rpt.SetParameterValue(a[i].Split('=')[0].ToString(), a[i].Split('=')[1].ToString());
-                        }
-                    }
+                    SetReportParameters(rpt);
 
                     //rpt.PrintOptions.NoPrinter = false;
 
@@ -78,7 +65,8 @@ namespace WebReportHightJump
                     
 
                     this.CrystalReportViewer1.ReportSource = rpt;
-                    this.CrystalReportViewer1.RefreshReport();
+                    if (rpt.DataDefinition.ParameterFields.Count == 0)
+                        this.CrystalReportViewer1.RefreshReport();
                     this.CrystalReportViewer1.Zoom(Convert.ToInt32(ClassConfig.Instance.getZoomDefault()));
                     //this.CrystalReportViewer1.ReportSource = crs;
 
@@ -118,21 +106,7 @@ namespace WebReportHightJump
         {
             try
             {
-                string query = Server.UrlDecode(Request.QueryString.ToString()); //Request.QueryString.ToString();
-                                                                                 //string query = Request.QueryString.ToString();
-
-                string[] arr = query.Split('?');
-
-                // set Parameter to Report
-                string[] a = arr[0].Split('&');
-                for (int i = 0; i < a.Length; i++)
-                {
-                    if (i >= 4)
-                    {
-                        rpt.SetParameterValue(a[i].Split('=')[0].ToString(), a[i].Split('=')[1].ToString());
-                    }
-                }
-
+                SetReportParameters(rpt);
                 ConfigureReportConnection(rpt);
 
                 //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
@@ -144,6 +118,28 @@ namespace WebReportHightJump
             {
 
                 //throw;
+            }
+        }
+
+        private void SetReportParameters(ReportDocument report)
+        {
+            foreach (string key in Request.QueryString.AllKeys)
+            {
+                if (string.IsNullOrEmpty(key) || key.StartsWith("_app_", StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                bool isReportParameter = false;
+                for (int i = 0; i < report.DataDefinition.ParameterFields.Count; i++)
+                {
+                    if (string.Equals(report.DataDefinition.ParameterFields[i].Name, key, StringComparison.OrdinalIgnoreCase))
+                    {
+                        isReportParameter = true;
+                        break;
+                    }
+                }
+
+                if (isReportParameter)
+                    report.SetParameterValue(key, Request.QueryString[key]);
             }
         }
 
