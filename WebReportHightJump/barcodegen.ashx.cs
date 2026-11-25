@@ -107,7 +107,10 @@ namespace WebReportHightJump
             switch (type)
             {
                 case "QR":
-                    builder.QREncodeMode = QREncodeMode.Auto;
+                    // Aspose Auto mode can lose Unicode text under ASP.NET.
+                    builder.QREncodeMode = !string.IsNullOrEmpty(data) && data.Any(character => character > '\u007F')
+                        ? QREncodeMode.ECIEncoding
+                        : QREncodeMode.Auto;
                     builder.QREncodeType = QREncodeType.ForceQR;
                     builder.QRErrorLevel = QRErrorLevel.LevelQ;
                     builder.ECIEncoding = ECIEncodings.UTF8;
