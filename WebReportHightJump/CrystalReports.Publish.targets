@@ -1,0 +1,47 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="ValidateCrystalReportsAssemblyVersion" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(CrystalReportsAssemblyVersion)' != '13.0.4000.0' And '$(CrystalReportsAssemblyVersion)' != '13.0.3500.0'"
+           Text="CrystalReportsAssemblyVersion must be 13.0.4000.0 or 13.0.3500.0." />
+  </Target>
+
+  <UsingTask TaskName="WriteCrystalPublishFile" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <SourceFile ParameterType="System.String" Required="true" />
+      <OutputFile ParameterType="System.String" Required="true" />
+      <AssemblyVersion ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System.IO" />
+      <Using Namespace="System.Text" />
+      <Code Type="Fragment" Language="cs"><![CDATA[
+        const string defaultVersion = "13.0.4000.0";
+        string content = File.ReadAllText(SourceFile);
+        if (!content.Contains(defaultVersion))
+        {
+            Log.LogError("The default Crystal assembly version was not found in {0}.", SourceFile);
+            return false;
+        }
+
+        Directory.CreateDirectory(Path.GetDirectoryName(OutputFile));
+        File.WriteAllText(OutputFile, content.Replace(defaultVersion, AssemblyVersion), new UTF8Encoding(true));
+      ]]></Code>
+    </Task>
+  </UsingTask>
+
+  <Target Name="PrepareLegacyCrystalPublishFiles" AfterTargets="PipelineCollectFilesPhase"
+          Condition="'$(CrystalReportsAssemblyVersion)' == '13.0.3500.0'">
+    <ItemGroup>
+      <_CrystalPublishFile Include="@(FilesForPackagingFromProject)"
+                           Condition="'%(FilesForPackagingFromProject.DestinationRelativePath)' == 'Web.config' Or '%(FilesForPackagingFromProject.DestinationRelativePath)' == 'CrystalReport.aspx'">
+        <GeneratedFile>$(IntermediateOutputPath)CrystalReports\$(CrystalReportsAssemblyVersion)\%(FilesForPackagingFromProject.DestinationRelativePath)</GeneratedFile>
+      </_CrystalPublishFile>
+    </ItemGroup>
+    <Error Condition="'@(_CrystalPublishFile->Count())' != '2'" Text="Legacy Crystal publish requires Web.config and CrystalReport.aspx in the package." />
+    <WriteCrystalPublishFile SourceFile="%(_CrystalPublishFile.FullPath)" OutputFile="%(_CrystalPublishFile.GeneratedFile)"
+                             AssemblyVersion="$(CrystalReportsAssemblyVersion)" />
+    <ItemGroup>
+      <FilesForPackagingFromProject Remove="@(_CrystalPublishFile)" />
+      <FilesForPackagingFromProject Include="@(_CrystalPublishFile->'%(GeneratedFile)')" />
+    </ItemGroup>
+  </Target>
+</Project>

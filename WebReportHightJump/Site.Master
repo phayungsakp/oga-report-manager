@@ -40,6 +40,7 @@
                     
                 <button id="btnReportPrint" class="btn btn-outline-light my-2 my-sm-0" type="button" title="Print Report">
                     <i class="fa fa-print fa-2x" aria-hidden="true"></i>
+                    <i class="fa fa-spinner fa-pulse fa-2x d-none" aria-hidden="true"></i>
                 </button>
               </div>
             </nav>
@@ -82,44 +83,60 @@
     </asp:PlaceHolder>
 
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('#printInstallnModal').modal('show');
+        var wcppGetVerTimeout_ms = 10000;
+        var wcppGetVerTimeoutStep_ms = 500;
+        var wcppReady = false;
 
-            // $('#printOptionModal').on('show', function () {
-            //    jsWebClientPrint.getPrinters();
-            //});
+        $('#btnReportPrint').on('click', Print);
 
-            $('#printOptionModal').on('shown.bs.modal', function () {
-                $('#spinnerGetPrinter').css('display', 'block');
-                jsWebClientPrint.getPrintersInfo();
-            })
-        });
-
-        $('#btnReportPrint').click(function () {
-            $('#printOptionModal').modal('show');
-
-            return false;
+        $('#printOptionModal').on('shown.bs.modal', function () {
+            $('#spinnerGetPrinter').css('display', 'block');
+            jsWebClientPrint.getPrintersInfo();
         });
 
         function Print() {
-            //var dvReport = document.getElementById("dvReport");
-            //var frame1 = dvReport.getElementsByTagName("iframe")[0];
-            //if (navigator.appName.indexOf("Internet Explorer") != -1) {
-            //    frame1.name = frame1.id;
-            //    window.frames[frame1.id].focus();
-            //    window.frames[frame1.id].print();
-            //}
-            //else {
-            //    var frameDoc = frame1.contentWindow ? frame1.contentWindow : frame1.contentDocument.document ? frame1.contentDocument.document : frame1.contentDocument;
-            //    frameDoc.print();
-            //}
+            if (wcppReady) {
+                $('#printOptionModal').modal('show');
+                return;
+            }
 
-            //wcppDetectOnSuccess();
-            $('#printOptionModal').modal('show');
+            if ($('#btnReportPrint').prop('disabled')) {
+                return;
+            }
+
+            if (!window.jsWebClientPrint) {
+                window.alert('โหลดระบบพิมพ์ไม่สำเร็จ กรุณารีเฟรชหน้าแล้วลองอีกครั้ง');
+                return;
+            }
+
+            setWcppChecking(true);
+            jsWebClientPrint.getWcppVer();
+        }
+
+        function setWcppChecking(checking) {
+            var button = $('#btnReportPrint');
+            button.prop('disabled', checking).attr('aria-busy', String(checking));
+            button.find('.fa-print').toggleClass('d-none', checking);
+            button.find('.fa-spinner').toggleClass('d-none', !checking);
+        }
+
+        function wcpGetWcppVerOnSuccess(version) {
+            finishWcppCheck(/^5(?:\.|$)/.test(version));
+        }
+
+        function wcpGetWcppVerOnFailure() {
+            finishWcppCheck(false);
+        }
+
+        function finishWcppCheck(ready) {
+            if (!$('#btnReportPrint').prop('disabled')) {
+                return;
+            }
+
+            setWcppChecking(false);
+            wcppReady = ready;
+            $(ready ? '#printOptionModal' : '#printInstallnModal').modal('show');
         }
     </script>
-
-    <%-- WCPP detection script code --%>
-    <%=Neodynamic.SDK.Web.WebClientPrint.CreateWcppDetectionScript( (System.Configuration.ConfigurationManager.AppSettings["ReportProtocol"] != null ?System.Configuration.ConfigurationManager.AppSettings["ReportProtocol"] : HttpContext.Current.Request.Url.Scheme) + "://" + HttpContext.Current.Request.Url.Authority + HttpContext.Current.Request.ApplicationPath + "/WebPrint"+ "/WebClientPrintAPI.ashx", HttpContext.Current.Session.SessionID)%>
 </body>
 </html>

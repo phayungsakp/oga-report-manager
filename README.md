@@ -16,7 +16,7 @@
 ## 2) เทคโนโลยีและ dependency หลัก
 
 - ASP.NET Web Forms (.NET Framework 4.6.1)
-- Crystal Reports for .NET (13.0.3500.0)
+- Crystal Reports for .NET (assembly 13.0.4000.0) ต้องติดตั้ง SAP Crystal Reports runtime ให้ตรงกับ bitness ของ IIS หรือ IIS Express (ทดสอบกับ SP32)
 - Microsoft ReportViewer WebForms 10.0.0.0
 - Neodynamic.SDK.WebClientPrint 5.0.0
 - Aspose.BarCode 16.11.0
@@ -142,6 +142,22 @@ Steps:
 4. ตั้ง startup project เป็น WebReportHightJump
 5. Run ด้วย IIS Express หรือ Local IIS
 6. ทดสอบด้วย URL ที่มี \_app_reportpath และ report parameters
+
+### Publish ให้ตรงกับ Crystal Reports Runtime
+
+ตรวจ assembly version ของ `CrystalDecisions.Shared.dll` บนเครื่อง IIS และตรวจค่า `Enable 32-Bit Applications` ของ Application Pool ก่อนเลือกชุด publish ใช้ SAP Runtime MSI ที่ตรงกับ Support Pack และ bitness ของไซต์
+
+- ใช้ Visual Studio Publish ตามปกติสำหรับไซต์ที่ใช้ assembly `13.0.4000.0`
+- สำหรับไซต์ที่ใช้ `13.0.3500.0` ให้ใช้ MSBuild ของ Visual Studio และระบุเวอร์ชันตอน publish หากเครื่อง build มีแต่ runtime ใหม่ ให้ชี้ `ReferencePath` ไปยังโฟลเดอร์ DLL ของ SAP รุ่นที่ลูกค้าใช้
+
+~~~powershell
+MSBuild.exe .\WebReportHightJump\WebReportHightJump.csproj /t:Build `
+  /p:Configuration=Release /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish `
+  /p:PublishProfile=Profile1 /p:DeleteExistingFiles=false /p:CrystalReportsAssemblyVersion=13.0.3500.0 `
+  '/p:ReferencePath=D:\CrystalRefs\13.0.3500.0' '/p:publishUrl=D:\Publish\oga-cr-13.0.3500.0'
+~~~
+
+ใช้โฟลเดอร์ publish ใหม่สำหรับแต่ละไซต์และเวอร์ชัน ชุดที่ publish จะใช้ Crystal runtime ที่ติดตั้งบน IIS หากอัปเกรดจากชุดเก่าที่เคยใส่ Crystal DLL ไว้ใน `bin` ให้ย้าย DLL ชุดเก่าออกจาก `bin` ของแอปก่อนเริ่มใช้งานชุดใหม่
 
 ## 8) Configuration ที่ต้องระวัง
 

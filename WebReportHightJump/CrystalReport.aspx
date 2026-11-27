@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CrystalReport.aspx.cs" Inherits="WebReportHightJump.CrystalReport" %>
 
-<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
+<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -142,36 +142,22 @@
     </div>
 
 
-    <div id="printInstallnModal" class="modal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div id="printInstallnModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="printInstallModalLabel" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 id="printOptionModalLabel">WCPP utility</h3>
+                    <h3 id="printInstallModalLabel">WCPP utility</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div id="msgInProgress" style="font-size: 11pt;" class="p-4">
-                        <h3>Detecting WCPP utility at client side...</h3>
-
-                        <div class="alert">
-                            <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
-                            <h3>
-                                <%--<asp:Image ID="imgSpinner" runat="server" BorderWidth="0px" BorderStyle="None" />--%>
-                                <i class="fa fa-spinner fa-pulse"></i>
-                                Please wait a few seconds...</h3>
-                        </div>
-                    </div>
-
-                    <div id="msgInstallWCPP" class="alert alert-error" style="display: none;">
+                    <div class="alert alert-error">
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <h2>คำเตือน!</h2>
-                                    <span style="font-size: 14pt;">กรุณาดาวน์โหลดและติดตั้งโปรแกรมสำหรับการพิมพ์</span>
-                                    <br />
-                                    <span style="font-size: 14pt;">* เมื่อติดตั้งเรียบร้อยแล้วให้ทำการ refresh หน้าเว็บ</span>
+                                    <h2>เชื่อมต่อ WCPP ไม่สำเร็จ</h2>
+                                    <span style="font-size: 14pt;">หากยังไม่มี WCPP 5 ให้ดาวน์โหลดและติดตั้ง จากนั้นปิดหน้าต่างนี้แล้วกดพิมพ์อีกครั้ง</span>
                                 </div>
                             </div>
                             <div class="row pt-4">
@@ -496,42 +482,6 @@
             $('#printOptionModal').modal('hide');
         }
     </script>
-
-    <script type="text/javascript">
-
-        var wcppPingTimeout_ms = 10000; //10 sec
-        var wcppPingTimeoutStep_ms = 500; //0.5 sec
-
-        function wcppDetectOnSuccess() {
-            // WCPP utility is installed at the client side
-            // redirect to WebClientPrint sample page
-
-            // get WCPP version
-            var wcppVer = arguments[0];
-            if (wcppVer.substring(0, 1) == "5") {
-                //window.location.href = 'PrintRPT.aspx';
-                console.log("Print Client Detected");
-                $('#msgInProgress').hide();
-                //$('#msgInstallWCPP').hide();
-
-                $('#printInstallnModal').modal('hide');
-
-                //$('#printOptionModal').modal('show');
-            }
-            else //force to install WCPP v4.0
-                wcppDetectOnFailure();
-        }
-
-        function wcppDetectOnFailure() {
-            // It seems WCPP is not installed at the client side
-            // ask the user to install it
-            $('#msgInProgress').hide();
-            $('#msgInstallWCPP').show();
-
-            $('#printInstallnModal').modal('show');
-        }
-    </script>
-
 
     <%=Neodynamic.SDK.Web.WebClientPrint.CreateScript(
                               (System.Configuration.ConfigurationManager.AppSettings["ReportProtocol"] != null ?System.Configuration.ConfigurationManager.AppSettings["ReportProtocol"] : HttpContext.Current.Request.Url.Scheme) + "://" + HttpContext.Current.Request.Url.Authority + HttpContext.Current.Request.ApplicationPath + "/WebPrint" + "/WebClientPrintAPI.ashx"
