@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.Web.UI;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
@@ -39,7 +40,7 @@ namespace WebReportHightJump
 
                     ConfigureReportConnection(rpt);
 
-                    SetReportParameters(rpt);
+                    SetReportParameters(rpt, Request.QueryString);
 
                     //rpt.PrintOptions.NoPrinter = false;
 
@@ -106,7 +107,7 @@ namespace WebReportHightJump
         {
             try
             {
-                SetReportParameters(rpt);
+                SetReportParameters(rpt, Request.QueryString);
                 ConfigureReportConnection(rpt);
 
                 //rpt.PrintOptions.PaperSize = CrystalDecisions.Shared.PaperSize.PaperA4;
@@ -121,9 +122,9 @@ namespace WebReportHightJump
             }
         }
 
-        private void SetReportParameters(ReportDocument report)
+        internal static void SetReportParameters(ReportDocument report, NameValueCollection parameters)
         {
-            foreach (string key in Request.QueryString.AllKeys)
+            foreach (string key in parameters.AllKeys)
             {
                 if (string.IsNullOrEmpty(key) || key.StartsWith("_app_", StringComparison.OrdinalIgnoreCase))
                     continue;
@@ -139,7 +140,7 @@ namespace WebReportHightJump
                 }
 
                 if (isReportParameter)
-                    report.SetParameterValue(key, Request.QueryString[key]);
+                    report.SetParameterValue(key, parameters[key]);
             }
         }
 

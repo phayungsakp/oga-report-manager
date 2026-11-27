@@ -1,5 +1,7 @@
 ﻿
 using System;
+using System.Collections.Specialized;
+using System.Text;
 using System.Web;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
@@ -25,30 +27,51 @@ namespace WebReportHightJump.WebPrint
         {
             if (WebClientPrint.ProcessPrintJob(context.Request.Url.Query))
             {
-                string query = context.Server.UrlDecode(context.Request.QueryString.ToString());
-                string strRptName = context.Request.QueryString["_app_reportpath"].ToString(); // context.Request["reportName"]; // ConfigurationManager.AppSettings["rptFilePath"] + rpt.rptName;
-
-                bool useDefaultPrinter = (context.Request["useDefaultPrinter"] == "checked");
-                string printerName = context.Server.UrlDecode(context.Request["printerName"]);
-                string trayName = context.Server.UrlDecode(context.Request["trayName"]);
-                string paperName = context.Server.UrlDecode(context.Request["paperName"]);
-
-                string printRotation = context.Server.UrlDecode(context.Request["printRotation"]);
-                string pagesRange = context.Server.UrlDecode(context.Request["pagesRange"]);
-
-                bool printAnnotations = (context.Request["printAnnotations"] == "true");
-                bool printAsGrayscale = (context.Request["printAsGrayscale"] == "true");
-                bool printInReverseOrder = (context.Request["printInReverseOrder"] == "true");
-                bool printAutoRotate = (context.Request["printAutoRotate"] == "true");
-                int printCopies = 1;
-                try
+                NameValueCollection printOptions = context.Request.QueryString;
+                NameValueCollection reportParameters = context.Request.QueryString;
+                string payload = printOptions["printPayload"];
+                bool legacyRequest = payload == null;
+                if (!legacyRequest)
                 {
-                    printCopies = Convert.ToInt32(context.Server.UrlDecode(context.Request["printCopies"]));
+                    try
+                    {
+                        printOptions = DecodePrintPayload(payload);
+                    }
+                    catch (FormatException)
+                    {
+                        BadPrintRequest(context.Response, "Invalid print payload.");
+                        return;
+                    }
+
+                    reportParameters = HttpUtility.ParseQueryString(printOptions["reportQuery"] ?? string.Empty);
                 }
-                catch
+
+                string strRptName = reportParameters["_app_reportpath"];
+                if (string.IsNullOrWhiteSpace(strRptName))
                 {
+                    BadPrintRequest(context.Response, "Missing report path.");
+                    return;
+                }
+
+                string printerName = ReadPrintOption(printOptions, "printerName", legacyRequest);
+                string trayName = ReadPrintOption(printOptions, "trayName", legacyRequest);
+                string paperName = ReadPrintOption(printOptions, "paperName", legacyRequest);
+                string pagesRange = ReadPrintOption(printOptions, "pagesRange", legacyRequest);
+
+                PrintRotation printRotation;
+                if (!Enum.TryParse(ReadPrintOption(printOptions, "printRotation", legacyRequest), out printRotation))
+                {
+                    BadPrintRequest(context.Response, "Invalid print rotation.");
+                    return;
+                }
+
+                bool printAnnotations = (printOptions["printAnnotations"] == "true");
+                bool printAsGrayscale = (printOptions["printAsGrayscale"] == "true");
+                bool printInReverseOrder = (printOptions["printInReverseOrder"] == "true");
+                bool printAutoRotate = (printOptions["printAutoRotate"] == "true");
+                int printCopies;
+                if (!int.TryParse(ReadPrintOption(printOptions, "printCopies", legacyRequest), out printCopies))
                     printCopies = 1;
-                }
 
 
                 //load and set report's data source
@@ -102,15 +125,7 @@ namespace WebReportHightJump.WebPrint
                     CrTable.ApplyLogOnInfo(crtableLogoninfo);
                 }
 
-                string[] arr = query.Split('?');
-                string[] a = arr[0].Split('&');
-                for (int i = 0; i < a.Length; i++)
-                {
-                    if (i >= 16)
-                    {
-                        crReportDocument.SetParameterValue(a[i].Split('=')[0].ToString(), a[i].Split('=')[1].ToString());
-                    }
-                }
+                CrystalReport.SetReportParameters(crReportDocument, reportParameters);
 
                 //if (context.Request["reportParam"].ToString() != "undefined")
                 //{
@@ -155,7 +170,7 @@ namespace WebReportHightJump.WebPrint
                 PrintFilePDF file = new PrintFilePDF(context.Server.MapPath(pdfFilePath), fileName);
                 //Create a PrintFilePDF object with the PDF file
                 //PrintFilePDF file = new PrintFilePDF(pdfContent, fileName);
-                file.PrintRotation = (PrintRotation)Enum.Parse(typeof(PrintRotation), printRotation); ;
+                file.PrintRotation = printRotation;
                 file.PagesRange = pagesRange;
                 file.PrintAnnotations = printAnnotations;
                 file.PrintAsGrayscale = printAsGrayscale;
@@ -203,6 +218,28 @@ namespace WebReportHightJump.WebPrint
         }
 
 
+
+        private static NameValueCollection DecodePrintPayload(string payload)
+        {
+            string base64 = payload.Replace('-', '+').Replace('_', '/');
+            base64 = base64.PadRight(((base64.Length + 3) / 4) * 4, '=');
+            string printQuery = Encoding.ASCII.GetString(Convert.FromBase64String(base64));
+            return HttpUtility.ParseQueryString(printQuery);
+        }
+
+        private static string ReadPrintOption(NameValueCollection options, string key, bool legacyRequest)
+        {
+            string value = options[key];
+            return legacyRequest ? HttpUtility.UrlDecode(value) : value;
+        }
+
+        private static void BadPrintRequest(HttpResponse response, string message)
+        {
+            response.StatusCode = 400;
+            response.TrySkipIisCustomErrors = true;
+            response.ContentType = "text/plain";
+            response.Write(message);
+        }
 
         public bool IsReusable
         {

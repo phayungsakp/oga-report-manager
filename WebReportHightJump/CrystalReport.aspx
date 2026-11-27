@@ -476,23 +476,24 @@
 
 
         function printReport() {
-            var query = '<%=HttpUtility.UrlEncode(Request.QueryString.ToString())%>';
-
-            jsWebClientPrint.print('useDefaultPrinter=' + $('#useDefaultPrinter').attr('checked')
-                    + '&printerName=' + encodeURIComponent($('#installedPrinterName').val())
+            var reportQuery = '<%= HttpUtility.JavaScriptStringEncode(Request.QueryString.ToString()) %>';
+            var printRequest = 'printerName=' + encodeURIComponent($('#installedPrinterName').val())
                     + '&trayName=' + encodeURIComponent($('#lstPrinterTrays').val())
                     + '&paperName=' + encodeURIComponent($('#lstPrinterPapers').val())
-                    + '&printRotation=' + $('#lstPrintRotation').val()
+                    + '&printRotation=' + encodeURIComponent($('#lstPrintRotation').val())
                     + '&pagesRange=' + encodeURIComponent($('#txtPagesRange').val())
                     + '&printAnnotations=' + $('#chkPrintAnnotations').prop('checked')
                     + '&printAsGrayscale=' + $('#chkPrintAsGrayscale').prop('checked')
                     + '&printInReverseOrder=' + $('#chkPrintInReverseOrder').prop('checked')
                     + '&printAutoRotate=' + $('#chkPrintAutoRotate').prop('checked')
                     + '&printCopies=' + encodeURIComponent($('#txtCopies').val())
-                    + '&' + query //encodeURIComponent('<%//Request.QueryString.ToString()%>')
-                );
+                    + '&reportQuery=' + encodeURIComponent(reportQuery);
 
-             $('#printOptionModal').modal('hide');
+            // Keep URL delimiters out of the value passed through WebClientPrint's protocol handler.
+            var payload = btoa(printRequest).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+            jsWebClientPrint.print('printPayload=' + payload);
+
+            $('#printOptionModal').modal('hide');
         }
     </script>
 

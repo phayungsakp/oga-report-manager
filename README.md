@@ -155,7 +155,6 @@ Steps:
 - ข้อมูล credential ฐานข้อมูลอยู่ใน Web.config แบบ plain text
 - URL parameter ยังไม่มีชั้น validation/whitelist สำหรับชื่อไฟล์ report และค่าพารามิเตอร์
 - มีไฟล์สำรองและโฟลเดอร์ backup จำนวนมากใน repo (ควรแยกออกหรือ archive)
-- การ parse parameter ฝั่ง PrintRPTHandler ยังอิงตำแหน่ง index ใน query (เริ่ม i >= 16) ซึ่งเปราะบาง
 
 ## 10) เอกสารอ้างอิงภายในโปรเจกต์
 

@@ -7,7 +7,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile>2016-03-30T14:55:44.0000000+07:00</TimeStampOfAssociatedLegacyPublishXmlFile>
     <_PublishTargetUrl>D:\OneDrive - oga.co.th\OGA_Report_Manager\Publish</_PublishTargetUrl>
-    <History>True|2025-03-21T07:51:48.2277147Z||;</History>
+    <History>True|2026-11-27T07:46:53.5868378Z||;True|2026-11-25T11:13:16.8238233+07:00||;True|2025-03-21T14:51:48.2277147+07:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -114,13 +114,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/24/2012 13:52:52</publishTime>
     </File>
     <File Include="bin/Microsoft.Win32.Primitives.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/Neodynamic.SDK.WebClientPrint.dll">
       <publishTime>10/11/2019 21:30:12</publishTime>
     </File>
     <File Include="bin/netstandard.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/pt/Microsoft.ReportViewer.WebForms.resources.dll">
       <publishTime>06/24/2012 13:52:50</publishTime>
@@ -135,298 +135,298 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2019 11:51:01</publishTime>
     </File>
     <File Include="bin/System.AppContext.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Collections.Concurrent.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Collections.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Collections.NonGeneric.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Collections.Specialized.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.ComponentModel.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.ComponentModel.EventBasedAsync.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.ComponentModel.Primitives.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.ComponentModel.TypeConverter.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Console.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Data.Common.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.Contracts.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.Debug.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.FileVersionInfo.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.Process.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.StackTrace.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.TextWriterTraceListener.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.Tools.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.TraceSource.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Diagnostics.Tracing.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Drawing.Primitives.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Dynamic.Runtime.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Globalization.Calendars.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Globalization.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Globalization.Extensions.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.IO.Compression.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.IO.Compression.ZipFile.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.IO.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.IO.FileSystem.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.IO.FileSystem.DriveInfo.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.IO.FileSystem.Primitives.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.IO.FileSystem.Watcher.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.IO.IsolatedStorage.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.IO.MemoryMappedFiles.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.IO.Pipes.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.IO.UnmanagedMemoryStream.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Linq.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Linq.Expressions.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Linq.Parallel.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Linq.Queryable.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Net.Http.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Net.NameResolution.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Net.NetworkInformation.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Net.Ping.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Net.Primitives.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Net.Requests.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Net.Security.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Net.Sockets.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Net.WebHeaderCollection.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Net.WebSockets.Client.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Net.WebSockets.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.ObjectModel.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Reflection.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Reflection.Extensions.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Reflection.Primitives.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Resources.Reader.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Resources.ResourceManager.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Resources.Writer.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Runtime.CompilerServices.Unsafe.dll">
       <publishTime>09/13/2019 02:28:42</publishTime>
     </File>
     <File Include="bin/System.Runtime.CompilerServices.VisualC.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Runtime.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Runtime.Extensions.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Runtime.Handles.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Runtime.InteropServices.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Runtime.InteropServices.RuntimeInformation.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Runtime.Numerics.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Runtime.Serialization.Formatters.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Runtime.Serialization.Json.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Runtime.Serialization.Primitives.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Runtime.Serialization.Xml.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Security.Claims.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Security.Cryptography.Algorithms.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Security.Cryptography.Csp.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Security.Cryptography.Encoding.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Security.Cryptography.Primitives.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Security.Cryptography.X509Certificates.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Security.Principal.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Security.SecureString.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Text.Encoding.CodePages.dll">
       <publishTime>09/13/2019 02:39:24</publishTime>
     </File>
     <File Include="bin/System.Text.Encoding.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Text.Encoding.Extensions.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Text.RegularExpressions.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Threading.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Threading.Overlapped.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Threading.Tasks.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Threading.Tasks.Parallel.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Threading.Thread.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Threading.ThreadPool.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Threading.Timer.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.ValueTuple.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Xml.ReaderWriter.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Xml.XDocument.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Xml.XmlDocument.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Xml.XmlSerializer.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Xml.XPath.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/System.Xml.XPath.XDocument.dll">
-      <publishTime>02/14/2025 10:04:34</publishTime>
+      <publishTime>10/01/2026 13:16:01</publishTime>
     </File>
     <File Include="bin/WebReportHightJump.dll">
-      <publishTime>03/21/2025 14:51:41</publishTime>
+      <publishTime>11/27/2026 14:46:52</publishTime>
     </File>
     <File Include="bin/WebReportHightJump.pdb">
-      <publishTime>03/21/2025 14:51:41</publishTime>
+      <publishTime>11/27/2026 14:46:52</publishTime>
     </File>
     <File Include="bin/zh-CHS/Microsoft.ReportViewer.WebForms.resources.dll">
       <publishTime>06/24/2012 13:53:48</publishTime>
@@ -480,7 +480,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/30/2019 16:52:48</publishTime>
     </File>
     <File Include="CrystalReport.aspx">
-      <publishTime>01/21/2022 19:37:18</publishTime>
+      <publishTime>11/27/2026 14:38:04</publishTime>
     </File>
     <File Include="CrystalReports/mixed-page-orientation.pdf">
       <publishTime>03/11/2020 13:28:30</publishTime>
@@ -654,7 +654,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/02/2019 11:51:01</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/21/2025 14:51:42</publishTime>
+      <publishTime>11/25/2026 11:13:10</publishTime>
     </File>
     <File Include="WebPrint/PrintRPTHandler.ashx">
       <publishTime>08/30/2019 17:13:10</publishTime>
